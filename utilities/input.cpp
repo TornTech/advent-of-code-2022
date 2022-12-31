@@ -2,7 +2,7 @@
 
 namespace Input {
 
-std::vector<std::string> readLinesFromFile(const std::filesystem::path &path) {
+std::vector<std::string> readLinesFromFile(const std::filesystem::path& path) {
     std::vector<std::string> lines{};
     if (!std::filesystem::exists(path)) {
         return lines;
@@ -15,6 +15,18 @@ std::vector<std::string> readLinesFromFile(const std::filesystem::path &path) {
     }
 
     return lines;
+}
+
+std::vector<std::string> splitString(const std::string str, char delimiter) {
+    std::vector<std::string> splitString{};
+    std::string token;
+    std::istringstream token_stream(str);
+
+    while (getline(token_stream, token, delimiter)) {
+        splitString.push_back(token);
+    }
+
+    return splitString;
 }
 
 } // namespace Input
